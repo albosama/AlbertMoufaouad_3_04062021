@@ -1,0 +1,349 @@
+/*@import "./Base/"
+@import "./Components/"
+@import "./layout/"
+*/
+@mixin mobile-only {
+    @media screen and (max-width:600px){
+        @content;
+    }
+}
+@mixin desktop-only {
+    @media screen and (min-width:700px){
+        @content;
+    }
+} 
+@mixin align-contain {
+    content: "";
+    display:flex;
+    justify-content:center; 
+} 
+@mixin generiq-btn {
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+@mixin box-shadow {
+    box-shadow:  -5px 5px 20px -5px gray;
+}
+@mixin background-gradient {
+    background: linear-gradient( #FF79DA, #9356DC);
+}
+%padding-box {
+    padding: 25px 20px;
+}
+%padding-title {
+    padding: 20px 0;
+}
+%pad-elem-footer {
+    padding: 0 0 10px 0;
+}
+/*variables polices*/
+$cd-txt: "Shrikhand";
+$cd-txt2: "Roboto";
+/*variables couleurs*/
+$clr-primaire:#9356DC ;
+$clr-secondaire: #FF79DA;
+$clr-tertiaire:#99E2D0;
+
+* {
+    margin:0;
+    padding:0;
+}
+h1{
+    font-family: $cd-txt;/*titre footer*/
+}
+p {
+    font-family: $cd-txt2;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+body {
+    font-family: 'Roboto', 'Shrikhand', serif, sans-serif;
+    margin: 0 auto;
+    max-width: 1500px;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 0px 10px 15px -15px gray;
+    position: relative;
+    &__logo {
+        /*@include align-contain;
+        padding:20px;*/  
+    }
+        & img{
+            @include mobile-only {
+                width: 220px;
+            }  
+        }
+}
+.location{
+    background: lightgrey;
+    &__icon {
+        @include align-contain;
+    }
+        & .fas.fa-map-marker-alt {
+            padding:24px 5px;
+            font-size:13px;
+        }
+        & p {
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 19px;
+        }
+}
+.titre_principal {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    padding: 25px;
+    background: #99E2D0;
+    & h2{
+        font-size: 1.5rem;
+        padding: 20px 40px;
+        text-align: center;
+    }
+    & h3 {
+        text-align: center;
+        font-weight: normal;
+        font-size: 1.2rem;
+        padding: 10px 0;
+    }
+    .btn {
+        margin: 20px;
+        font-size: 1.3rem;
+        @include generiq-btn;
+        @include background-gradient;
+        @include box-shadow;
+        &:hover {
+           @include box-shadow;
+           &:after {
+               opacity: 1;
+               border-radius: 10rem;
+           }
+            &::after {
+                content: ""; /*obligé de mettre le content pr que le "after soit prit en compte"*/
+                position :absolute;
+                top: 0 ;
+                right: 0;
+                left:0;
+                bottom:0;
+                background: radial-gradient(circle, lighten($clr-secondaire, 10) 0%, darken($clr-primaire, 5) 100%);
+                opacity: 0;
+                z-index: -1;
+                transition: opacity 250ms;
+                /*border-radius: 10rem;/*fallait le remettre sinon bug anim*/
+            }
+        }
+              
+    }
+}
+.container_nav {
+    @extend %padding-box;
+    & h2 {
+    @extend %padding-title;
+    }
+    & .nav {
+        
+    }
+        & ul > li {
+            @extend %padding-title;
+            list-style-type: none; 
+            cursor: pointer;
+            display: flex;
+        }
+        & span {
+            border-radius: 1rem;
+            background: $clr-primaire;
+            width: 20px;
+            color: #fff;
+            font-size: 15px;
+            display: flex;
+            justify-content: center;
+            /*padding: 5px;*/
+            height: min-content;
+            margin-top: 25px;
+            z-index: 1;
+        }
+        & div {
+            display: flex;
+            align-items: baseline;
+            border-radius: 1rem;
+            background: #99E2D0;
+            padding: 25px 0;
+            width: 100%;
+            margin-left: -10px;
+            box-shadow: 5px 10px 6px lightgray;
+        }
+            & .fa-mobile-alt {
+                color: $clr-primaire;
+                font-size: 17px;
+                margin-left: 60px;
+            }
+            & strong {
+                margin-left: 35px;
+                /*font-size: 18px;*/
+            }
+    .nav__link--item {
+        & .fa-ellipsis-v{
+            color: $clr-primaire;
+            font-size: 16px;
+            margin-left: 55px;
+            display: flex;
+            align-items: center;
+        }
+        & .fa-bars {
+            color: $clr-primaire;
+            margin: 0px 0 -1px 1px;
+            /*font-size: 20px;*/
+            /*height: 30px;*/
+            align-items: center;
+            display: flex;
+        }
+            & strong {
+                margin-left: 30px;
+            }
+        }
+    .nav__link--active {
+        & div > .fa-store {
+            color: $clr-primaire;
+            /*font-size: 18px;*/
+            margin-left: 55px;
+            display: flex;
+            /*align-items: center;*/
+        }
+            & strong {
+                margin-left: 30px;
+                /*font-size: 18px;*/
+            }
+    }
+           
+}
+.restaurants {
+    @extend %padding-box;
+    background: lightgrey;
+    & h2 {
+        @extend %padding-title;
+    }
+    & .restaurants__list {
+
+    }
+        & .cards {
+            background-color: white;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 20px;
+            @include box-shadow;
+        }
+            & .restaurants__list--card{
+                height: 200px;
+            }
+                & img {
+                    width: 100%;
+                    border-radius: 1rem 1rem 0 0;
+                    height: 200px;
+                    object-fit: cover;
+                }
+            & .restaurant__list--card--legende {
+                height: 50px;
+                padding: 5px 10px;
+                }
+                & p {
+                    margin-top: 5px;
+                }
+            & .like {
+                display: flex;
+                justify-content: flex-end;
+                margin: -40px 15px;
+            }
+                & .fa-heart{
+                    font-size: 25px;
+                }
+}
+footer {
+    background: grey;
+    padding: 20px;
+    & h1 {
+        @extend %pad-elem-footer;
+        color: white;
+    }
+    & .content_credit > p {
+        @extend %pad-elem-footer;
+        color: white;
+    }
+        & p > a {
+            color: white;
+        }
+        & .fa-utensils {
+            font-size: 17px;
+            padding-right: 15px;
+        }
+        & .fa-hands-helping {
+            font-size: 14px;
+            padding-right: 10px;
+        }
+}
+
+/*--------------------CSS Carte Menu-----------------------------*/
+
+.header__logo {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    & .btn--return {
+        display: flex;
+        align-items: center;
+        font-size: 25px;
+        margin-left: -50px;
+    }
+    & img{
+        @include mobile-only {
+            width: 220px;
+        }  
+    }
+}
+.banniere {
+
+    & img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+    }
+}
+.main_bloc {
+    padding: 20px 15px;
+    background: aliceblue;
+}
+.title {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    & h1 {
+        font-size: 1.7rem;
+    }
+    & .fa-heart {
+        font-size: 25px;
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        height: 38px
+    }
+}
+
+.btn--purchase {
+    margin: 20px;
+    font-size: 1.3rem;
+    @include generiq-btn;
+    @include background-gradient;
+    @include box-shadow;
+    width: 200px;
+    margin: 50px;
+    text-align: center;
+}
