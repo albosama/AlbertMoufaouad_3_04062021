@@ -1,0 +1,57 @@
+/*variables pour Loader*/
+$loading-dur: 1500ms;
+$loading-delay:150ms;
+$bloc-page-delay: $loading-dur + $loading-delay*2;
+
+.bloc_page {
+    animation: main-container 0ms $bloc-page-delay both ;
+    width: 100%;
+    height: 100%;   
+    background: white;
+}
+.container--loader{
+	width: 100%;
+	height: 100%;
+    z-index: -1;
+    position: fixed;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box {
+    width: 10px;
+    height: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px auto;
+    border-radius: 50px;
+    &:nth-child(1) {
+        color: #35C4F0;
+        animation: right 1s infinite ease-in-out;
+    }
+    &:nth-child(2) {
+        color: #35C4F0;
+        animation: left 1.1s infinite ease-in-out;
+    }
+    &:nth-child(3) {
+        color: #35C4F0;
+        animation: right 1.05s infinite ease-in-out;
+    }
+    &:nth-child(4) {
+        color: #35C4F0;
+        animation: left 1.15s infinite ease-in-out;
+    }
+    &:nth-child(5) {
+        color: #35C4F0;
+        animation: right 1.1s infinite ease-in-out;
+    }
+    &:nth-child(6) {
+        color: #35C4F0;
+        animation: left 1.05s infinite ease-in-out;
+    }
+    &:nth-child(7) {
+        color: #35C4F0;
+        animation: right 1.15s infinite ease-in-out;
+    }
+}

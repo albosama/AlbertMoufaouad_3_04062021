@@ -1,0 +1,53 @@
+footer {
+    background: $clr-footer;
+    padding: 20px;
+    @include desktop-only {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 15px;
+    }
+    & h1 {
+        @extend %pad-elem-footer;
+        color: white;
+        font-weight: lighter;
+        font-size: 1.5rem;
+        @include desktop-only {
+            font-size: 3.3rem;
+            height: 75px;
+        }
+    }
+    & .content_credit {
+        & p {
+        @extend %pad-elem-footer;
+        color: white;
+        transform: scale(1);
+        transition: all 0.3s ease;
+        @include desktop-only {
+            font-size: 1.3rem;
+            }
+            &:hover {
+                color: $clr-tertiaire;
+                transform: scale(1.05);
+                @include desktop-only {
+                    transform: translateX(-10px);
+            }
+                }
+                & .fa-utensils {
+                font-size: 17px;
+                padding-right: 15px;
+                }
+                & .fa-hands-helping {
+                    font-size: 14px;
+                    padding-right: 10px;
+                }
+            }
+        }
+        & a {
+            color: white;
+            &:hover {
+                color: $clr-tertiaire;
+            }
+        }
+}

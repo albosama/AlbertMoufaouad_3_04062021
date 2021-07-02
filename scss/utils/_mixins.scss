@@ -1,0 +1,47 @@
+@mixin mobile-only {
+    @media screen and (max-width:600px){
+        @content;
+    }
+}
+@mixin desktop-only {
+    @media screen and (min-width:480px){
+        @content;
+    }
+} 
+@mixin align-contain {
+    content: "";
+    display:flex;
+    justify-content:center; 
+} 
+@mixin generiq-btn {
+    color: white;
+    padding: 0.85rem 1.5rem;
+    border-radius: 10rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+@mixin box-shadow {
+    box-shadow: 3px 5px 5px #0000005e;
+}
+@mixin hover-bs {
+    box-shadow: 3px 5px 5px #00000021;
+}
+@mixin background-gradient {
+    background: linear-gradient(175deg, #FF79DA, #9356DC);
+}
+@mixin transition-anim1 {
+    transition: all 0.4s ease-in-out;
+}
+@mixin text-menu-propriete {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+@mixin menu-animation {
+    overflow: hidden;
+    transform-origin: 100% 0%;
+    position: relative;
+    animation: menu 1.5s forwards ease-in-out;
+    opacity: 0;
+}

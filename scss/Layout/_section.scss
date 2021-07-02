@@ -1,0 +1,112 @@
+.restaurants {
+    @extend %padding-box;
+    background: $clr-background;
+    & h2 {
+        @extend %padding-title;
+        @include desktop-only{
+            text-align: center;
+        }
+    }
+    & .restaurants__list {
+        @include desktop-only {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 30px;
+            padding: 20px;
+        }
+        & .cards {
+            background-color: white;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 20px;
+            @include box-shadow;
+            height: 260px;       
+            &:hover{
+                box-shadow:3px 5px 5px #00000087;
+            }
+
+            & .restaurant__list--card {
+                overflow: hidden;
+                position: relative;
+                display: flex;
+                justify-content: end;
+                &::after{
+                    content: "";
+                    clear: both;
+                    display: block;
+                }
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: -75%;
+                    z-index: 2;
+                    display: block;
+                    content: "";
+                    width: 50%;
+                    height: 100%;
+                    transition: 0.4s ease-in-out;
+                    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	                background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	                transform: skewX(-25deg);
+
+                    &:hover::before{
+                        animation: shine .75s;  
+                        animation-delay: shine 0.8s;
+                        }
+                    }
+                & .new--content {
+                z-index: 1;
+                display: flex;
+                position: absolute;
+                margin: 10px 20px 0 0;
+                border-radius: 2px;
+                background: #99e2d0;
+                & span {
+                    padding: 5px 10px;
+                    color: #008766;
+                    font-weight: bold;
+                    font-size: 0.9rem;
+                    }
+                }
+                & img {
+                    width: 100%;
+                    border-radius: 1rem 1rem 0 0;
+                    height: 200px;
+                    object-fit: cover;
+                    transform: scale(1);
+                    transition: 0.4s ease-in-out;
+                    &:hover {
+                        transform:scale(1.2);
+                        border-radius: 6rem 6rem 0 0;
+                    }
+                }
+            }
+        }
+        & .restaurant__list--card--legende {
+            height: 50px;
+            padding: 5px 10px; 
+            }
+            & p {
+                margin-top: 5px;
+            }
+            & .like {
+                display: flex;
+                justify-content: flex-end;
+                margin: -40px 15px;
+                & .far{
+                    font-size: 25px;
+                    background: transparent;
+                    transition: all 0.3s ease-in-out;
+                    &:hover {
+                        transition: all 0.8s ease-in-out;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        font-weight: bold;
+                        background-image: linear-gradient(175deg, $clr-primaire, $clr-secondaire);
+                    }
+                }
+            }
+    }
+}
